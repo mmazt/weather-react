@@ -5,3 +5,9 @@ html, body, #root{
   font-size: 1.3em;
   height: 100%;
 }
+
+@media (min-width: 768px) {
+  .bloco {
+    margin: '80px';
+  }
+}

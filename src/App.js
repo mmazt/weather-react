@@ -45,7 +45,6 @@ class App extends Component {
   render() {
     const {main, weather, cidade} = this.state.data
     const date = this.handleDate()
-    console.log(date)
     const bg = weather ? background(weather[0].icon) : ''
     const block_bg = weather && weather[0].icon.indexOf('n') !== -1 ? blockNight : blockDay
     const local = cidade ? cidade.city + ', ' + cidade.region_code : ''
@@ -53,26 +52,26 @@ class App extends Component {
 
       <div style={{height:'100%', margin:'0', backgroundImage: `url(${bg})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
 
-      <Grid centered style={{height: 'auto', minHeight:'40%', position:'relative', top:'25%', margin: '0 auto',backgroundImage: `url(${block_bg})`, backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%'}}>
+      <Grid centered relaxed style={{height: 'auto', minHeight:'40%', position:'relative', top:'25%', margin: '0 auto',backgroundImage: `url(${block_bg})`, backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%'}}>
       
-      <Grid.Row>
-      <Grid.Column computer={7} mobile={9} tablet={9} widescreen={16} verticalAlign='middle' textAlign='center'>
+      <Grid.Row >
+      <Grid.Column computer={6} mobile={9} tablet={9} widescreen={16} verticalAlign='middle' textAlign='center' className='bloco' >
 
       <p><span style={{fontSize:'1.3em'}}>{local}<br /></span></p>
         <span style={{fontSize:'1.2em'}}>{date}<br /></span>
         <WeatherClock /><br /> <br />
         <span style={{fontSize:'1.3em'}}>Clima:</span>
         <br />
-        <List horizontal>
-        <List.Item><strong>Min.</strong> {main ? main.temp_min : ''}&ordm;</List.Item>
-        <List.Item><strong>Max.</strong> {main ? main.temp_max : ''}&ordm;&nbsp;</List.Item>
-        <List.Item><strong>Umidade:</strong> {main ? main.humidity  : ''}%</List.Item>
+        <List horizontal >
+        <List.Item><strong>Min. {main ? main.temp_min : ''}&ordm;</strong></List.Item>
+        <List.Item><strong>Max. {main ? main.temp_max : ''}&ordm;</strong></List.Item>
+        <List.Item><strong>Umidade: {main ? main.humidity  : ''}%</strong></List.Item>
         </List>
       </Grid.Column>
       </Grid.Row>
       </Grid>
 
-      {weather && weather[0].icon.indexOf('n') === -1 && main && main.temp_max >= 30 ? 
+      {weather && weather[0].icon.indexOf('n') === -1 && main && main.temp_max >= 32 ? 
       <Image src={inferno} style={{position: 'fixed', top:'0', right:'0'}} size='tiny'/> : ''}
 
       <Modal
