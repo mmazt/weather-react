@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import blockDay from './images/block_day.svg'
 import blockNight from './images/block_night.svg'
 import inferno from './images/sun-inferno.svg'
-import {Grid, List, Image, Loader, Dimmer, Modal, Button} from 'semantic-ui-react'
+import {Grid, List, Image, Loader, Dimmer, Modal, Button, Icon} from 'semantic-ui-react'
 import moment from 'moment'
 // eslint-disable-next-line
 import BR from 'moment/locale/pt-br'
@@ -57,15 +57,15 @@ class App extends Component {
       <Grid.Row >
       <Grid.Column computer={6} mobile={9} tablet={9} widescreen={16} verticalAlign='middle' textAlign='center' className='bloco' >
 
-      <p><span style={{fontSize:'1.3em'}}>{local}<br /></span></p>
+      <p><span style={{fontSize:'1.3em'}}><Icon name='marker' />{local}<br /></span></p>
         <span style={{fontSize:'1.2em'}}>{date}<br /></span>
         <WeatherClock /><br /> <br />
-        <span style={{fontSize:'1.3em'}}>Clima:</span>
+        <span style={{fontSize:'1.3em'}}><Icon name='thermometer' />Clima:</span>
         <br />
         <List horizontal >
-        <List.Item><strong>Min. {main ? main.temp_min : ''}&ordm;</strong></List.Item>
-        <List.Item><strong>Max. {main ? main.temp_max : ''}&ordm;</strong></List.Item>
-        <List.Item><strong>Umidade: {main ? main.humidity  : ''}%</strong></List.Item>
+        <List.Item><strong style={{fontSize:'1.15em'}}>Min. {main ? main.temp_min : ''}&ordm;</strong></List.Item>
+        <List.Item><strong style={{fontSize:'1.15em'}}>Max. {main ? main.temp_max : ''}&ordm;</strong></List.Item>
+        <List.Item><strong style={{fontSize:'1.15em'}}>Umidade: {main ? main.humidity  : ''}%</strong></List.Item>
         </List>
       </Grid.Column>
       </Grid.Row>
